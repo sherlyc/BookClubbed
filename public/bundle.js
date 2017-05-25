@@ -21844,15 +21844,7 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _Task = __webpack_require__(190);
-	
-	var _Task2 = _interopRequireDefault(_Task);
-	
-	var _AddTask = __webpack_require__(183);
-	
-	var _AddTask2 = _interopRequireDefault(_AddTask);
-	
-	var _api = __webpack_require__(184);
+	var _api = __webpack_require__(183);
 	
 	var api = _interopRequireWildcard(_api);
 	
@@ -21875,7 +21867,7 @@
 	    var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, props));
 	
 	    _this.state = {
-	      tasks: []
+	      books: []
 	    };
 	    return _this;
 	  }
@@ -21883,24 +21875,10 @@
 	  _createClass(App, [{
 	    key: 'componentDidMount',
 	    value: function componentDidMount() {
-	      this.refreshTasks();
-	    }
-	  }, {
-	    key: 'refreshTasks',
-	    value: function refreshTasks() {
 	      var _this2 = this;
 	
-	      api.getTasks(function (tasks) {
-	        _this2.setState({ tasks: tasks });
-	      });
-	    }
-	  }, {
-	    key: 'saveTask',
-	    value: function saveTask(task) {
-	      var _this3 = this;
-	
-	      api.saveTask(task, function () {
-	        _this3.refreshTasks();
+	      api.getBooks(function (books) {
+	        return _this2.setState({ books: books });
 	      });
 	    }
 	  }, {
@@ -21912,14 +21890,37 @@
 	        _react2.default.createElement(
 	          'h1',
 	          null,
-	          'Todo List'
+	          'Book Clubbed!'
 	        ),
-	        _react2.default.createElement(_AddTask2.default, { saveCallback: this.saveTask.bind(this) }),
 	        _react2.default.createElement(
-	          'ul',
+	          'div',
 	          null,
-	          this.state.tasks.map(function (task) {
-	            return _react2.default.createElement(_Task2.default, { key: task.id, task: task });
+	          this.state.books.map(function (book) {
+	            return _react2.default.createElement(
+	              'div',
+	              null,
+	              _react2.default.createElement('img', { src: book.image }),
+	              _react2.default.createElement(
+	                'h3',
+	                null,
+	                book.title
+	              ),
+	              _react2.default.createElement(
+	                'li',
+	                null,
+	                book.author
+	              ),
+	              _react2.default.createElement(
+	                'li',
+	                null,
+	                book.genre
+	              ),
+	              _react2.default.createElement(
+	                'li',
+	                null,
+	                book.rating
+	              )
+	            );
 	          })
 	        )
 	      );
@@ -21935,103 +21936,41 @@
 /* 183 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	'use strict';
+	"use strict";
 	
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
+	exports.getBooks = getBooks;
 	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	var _react = __webpack_require__(1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	var AddTask = function (_React$Component) {
-	  _inherits(AddTask, _React$Component);
-	
-	  function AddTask(props) {
-	    _classCallCheck(this, AddTask);
-	
-	    var _this = _possibleConstructorReturn(this, (AddTask.__proto__ || Object.getPrototypeOf(AddTask)).call(this, props));
-	
-	    _this.state = {
-	      name: ''
-	    };
-	    return _this;
-	  }
-	
-	  _createClass(AddTask, [{
-	    key: 'handleChange',
-	    value: function handleChange(e) {
-	      this.setState(_defineProperty({}, e.target.name, e.target.value));
-	    }
-	  }, {
-	    key: 'handleSubmit',
-	    value: function handleSubmit(e) {
-	      e.preventDefault();
-	      this.props.saveCallback(this.state);
-	      this.setState({ name: '' });
-	    }
-	  }, {
-	    key: 'render',
-	    value: function render() {
-	      return _react2.default.createElement(
-	        'form',
-	        { onSubmit: this.handleSubmit.bind(this) },
-	        _react2.default.createElement('input', { name: 'name', value: this.state.name, onChange: this.handleChange.bind(this) }),
-	        _react2.default.createElement('input', { type: 'submit', value: 'Save' })
-	      );
-	    }
-	  }]);
-	
-	  return AddTask;
-	}(_react2.default.Component);
-	
-	exports.default = AddTask;
-
-/***/ }),
-/* 184 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	exports.getTasks = getTasks;
-	exports.saveTask = saveTask;
-	
-	var _superagent = __webpack_require__(185);
+	var _superagent = __webpack_require__(184);
 	
 	var _superagent2 = _interopRequireDefault(_superagent);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	function getTasks(callback) {
-	  _superagent2.default.get('/api/v1/tasks').end(function (err, res) {
-	    callback(res.body);
-	  });
+	function getBooks(callback) {
+	  callback(books);
 	}
 	
-	function saveTask(task, callback) {
-	  _superagent2.default.post('/api/v1/tasks').send(task).end(function (err, res) {
-	    callback();
-	  });
-	}
+	var books = [{
+	  id: 0,
+	  title: "Catcher in the Rye",
+	  author: "J. D. Salinger",
+	  genre: "Coming-of-Age Fiction",
+	  description: "Holden Caulfield holds a place in the American psyche akin to Huck Finn and Tom Sawyer: an exquisitely rendered character with whom nearly anyone can identify.",
+	  image: "https://upload.wikimedia.org/wikipedia/en/3/32/Rye_catcher.jpg"
+	}, {
+	  id: 1,
+	  title: "War and Peace",
+	  author: "Leo Tolstoy",
+	  genre: "Historical Fiction",
+	  description: "War and Peace is a novel by the Russian author Leo Tolstoy, which is regarded as a central work of world literature and one of Tolstoy's finest literary achievements.",
+	  image: "http://t3.gstatic.com/images?q=tbn:ANd9GcTAnCgUQcW2e-HqpE6wC9VwXrcGh9_RbXInr3nZScQxpRdB8W4M"
+	}];
 
 /***/ }),
-/* 185 */
+/* 184 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/**
@@ -22048,9 +21987,9 @@
 	  root = this;
 	}
 	
-	var Emitter = __webpack_require__(186);
-	var requestBase = __webpack_require__(187);
-	var isObject = __webpack_require__(188);
+	var Emitter = __webpack_require__(185);
+	var requestBase = __webpack_require__(186);
+	var isObject = __webpack_require__(187);
 	
 	/**
 	 * Noop.
@@ -22062,7 +22001,7 @@
 	 * Expose `request`.
 	 */
 	
-	var request = module.exports = __webpack_require__(189).bind(null, Request);
+	var request = module.exports = __webpack_require__(188).bind(null, Request);
 	
 	/**
 	 * Determine XHR.
@@ -23013,7 +22952,7 @@
 
 
 /***/ }),
-/* 186 */
+/* 185 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	
@@ -23182,13 +23121,13 @@
 
 
 /***/ }),
-/* 187 */
+/* 186 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Module of mixed-in functions shared between node and client code
 	 */
-	var isObject = __webpack_require__(188);
+	var isObject = __webpack_require__(187);
 	
 	/**
 	 * Clear previous timeout.
@@ -23560,7 +23499,7 @@
 
 
 /***/ }),
-/* 188 */
+/* 187 */
 /***/ (function(module, exports) {
 
 	/**
@@ -23579,7 +23518,7 @@
 
 
 /***/ }),
-/* 189 */
+/* 188 */
 /***/ (function(module, exports) {
 
 	// The node and browser modules expose versions of this with the
@@ -23615,32 +23554,6 @@
 	
 	module.exports = request;
 
-
-/***/ }),
-/* 190 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	
-	var _react = __webpack_require__(1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	exports.default = function (_ref) {
-	  var task = _ref.task;
-	
-	  return _react2.default.createElement(
-	    'li',
-	    null,
-	    task.name
-	  );
-	};
 
 /***/ })
 /******/ ]);

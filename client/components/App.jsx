@@ -1,38 +1,36 @@
 import React from 'react'
-
-import Task from './Task'
-import AddTask from './AddTask'
 import * as api from '../api'
 
 export default class App extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      tasks: []
+      books: []
     }
   }
+
   componentDidMount() {
-    this.refreshTasks()
+    api.getBooks((books) => this.setState({books}))
+
   }
 
-  refreshTasks() {
-    api.getTasks((tasks) => {
-      this.setState({tasks})
-    })
-  }
-  saveTask(task) {
-    api.saveTask(task, () => {
-      this.refreshTasks()
-    })
-  }
-  render () {
+  render() {
     return (
       <div>
-        <h1>Todo List</h1>
-        <AddTask saveCallback={this.saveTask.bind(this)}/>
-        <ul>
-          {this.state.tasks.map(task => <Task key={task.id} task={task} />)}
-        </ul>
+        <h1>Book Clubbed!</h1>
+        <div>
+          {this.state.books.map((book) => {
+            return (
+              <div>
+                <img src={book.image}/>
+                <h3>{book.title}</h3>
+                <li>{book.author}</li>
+                <li>{book.genre}</li>
+                <li>{book.rating}</li>
+              </div>
+            )
+          })}
+        </div>
       </div>
     )
   }
