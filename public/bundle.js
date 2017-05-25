@@ -21844,15 +21844,15 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _Task = __webpack_require__(190);
+	var _Task = __webpack_require__(183);
 	
 	var _Task2 = _interopRequireDefault(_Task);
 	
-	var _AddTask = __webpack_require__(183);
+	var _AddTask = __webpack_require__(184);
 	
 	var _AddTask2 = _interopRequireDefault(_AddTask);
 	
-	var _api = __webpack_require__(184);
+	var _api = __webpack_require__(185);
 	
 	var api = _interopRequireWildcard(_api);
 	
@@ -21941,6 +21941,32 @@
 	  value: true
 	});
 	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	exports.default = function (_ref) {
+	  var task = _ref.task;
+	
+	  return _react2.default.createElement(
+	    'li',
+	    null,
+	    task.name
+	  );
+	};
+
+/***/ }),
+/* 184 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
 	var _react = __webpack_require__(1);
@@ -22001,7 +22027,7 @@
 	exports.default = AddTask;
 
 /***/ }),
-/* 184 */
+/* 185 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -22012,7 +22038,7 @@
 	exports.getTasks = getTasks;
 	exports.saveTask = saveTask;
 	
-	var _superagent = __webpack_require__(185);
+	var _superagent = __webpack_require__(186);
 	
 	var _superagent2 = _interopRequireDefault(_superagent);
 	
@@ -22031,7 +22057,7 @@
 	}
 
 /***/ }),
-/* 185 */
+/* 186 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/**
@@ -22048,9 +22074,9 @@
 	  root = this;
 	}
 	
-	var Emitter = __webpack_require__(186);
-	var requestBase = __webpack_require__(187);
-	var isObject = __webpack_require__(188);
+	var Emitter = __webpack_require__(187);
+	var requestBase = __webpack_require__(188);
+	var isObject = __webpack_require__(189);
 	
 	/**
 	 * Noop.
@@ -22062,7 +22088,7 @@
 	 * Expose `request`.
 	 */
 	
-	var request = module.exports = __webpack_require__(189).bind(null, Request);
+	var request = module.exports = __webpack_require__(190).bind(null, Request);
 	
 	/**
 	 * Determine XHR.
@@ -23013,7 +23039,7 @@
 
 
 /***/ }),
-/* 186 */
+/* 187 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	
@@ -23182,13 +23208,13 @@
 
 
 /***/ }),
-/* 187 */
+/* 188 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Module of mixed-in functions shared between node and client code
 	 */
-	var isObject = __webpack_require__(188);
+	var isObject = __webpack_require__(189);
 	
 	/**
 	 * Clear previous timeout.
@@ -23560,7 +23586,7 @@
 
 
 /***/ }),
-/* 188 */
+/* 189 */
 /***/ (function(module, exports) {
 
 	/**
@@ -23579,7 +23605,7 @@
 
 
 /***/ }),
-/* 189 */
+/* 190 */
 /***/ (function(module, exports) {
 
 	// The node and browser modules expose versions of this with the
@@ -23615,32 +23641,6 @@
 	
 	module.exports = request;
 
-
-/***/ }),
-/* 190 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	
-	var _react = __webpack_require__(1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	exports.default = function (_ref) {
-	  var task = _ref.task;
-	
-	  return _react2.default.createElement(
-	    'li',
-	    null,
-	    task.name
-	  );
-	};
 
 /***/ })
 /******/ ]);

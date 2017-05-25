@@ -5,6 +5,7 @@ import AddTask from './AddTask'
 import * as api from '../api'
 
 export default class App extends React.Component {
+
   constructor(props) {
     super(props)
     this.state = {
