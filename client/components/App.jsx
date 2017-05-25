@@ -1,6 +1,6 @@
 import React from 'react'
 
-import Task from './task'
+import Task from './Task'
 import AddTask from './AddTask'
 import * as api from '../api'
 
@@ -27,7 +27,7 @@ export default class App extends React.Component {
   }
   render () {
     return (
-      <div> 
+      <div>
         <h1>Todo List</h1>
         <AddTask saveCallback={this.saveTask.bind(this)}/>
         <ul>
