@@ -21844,7 +21844,19 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
+<<<<<<< HEAD
 	var _api = __webpack_require__(183);
+=======
+	var _Task = __webpack_require__(183);
+	
+	var _Task2 = _interopRequireDefault(_Task);
+	
+	var _AddTask = __webpack_require__(184);
+	
+	var _AddTask2 = _interopRequireDefault(_AddTask);
+	
+	var _api = __webpack_require__(185);
+>>>>>>> backend
 	
 	var api = _interopRequireWildcard(_api);
 	
@@ -21936,14 +21948,117 @@
 /* 183 */
 /***/ (function(module, exports, __webpack_require__) {
 
+<<<<<<< HEAD
 	"use strict";
+=======
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	exports.default = function (_ref) {
+	  var task = _ref.task;
+	
+	  return _react2.default.createElement(
+	    'li',
+	    null,
+	    task.name
+	  );
+	};
+
+/***/ }),
+/* 184 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var AddTask = function (_React$Component) {
+	  _inherits(AddTask, _React$Component);
+	
+	  function AddTask(props) {
+	    _classCallCheck(this, AddTask);
+	
+	    var _this = _possibleConstructorReturn(this, (AddTask.__proto__ || Object.getPrototypeOf(AddTask)).call(this, props));
+	
+	    _this.state = {
+	      name: ''
+	    };
+	    return _this;
+	  }
+	
+	  _createClass(AddTask, [{
+	    key: 'handleChange',
+	    value: function handleChange(e) {
+	      this.setState(_defineProperty({}, e.target.name, e.target.value));
+	    }
+	  }, {
+	    key: 'handleSubmit',
+	    value: function handleSubmit(e) {
+	      e.preventDefault();
+	      this.props.saveCallback(this.state);
+	      this.setState({ name: '' });
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        'form',
+	        { onSubmit: this.handleSubmit.bind(this) },
+	        _react2.default.createElement('input', { name: 'name', value: this.state.name, onChange: this.handleChange.bind(this) }),
+	        _react2.default.createElement('input', { type: 'submit', value: 'Save' })
+	      );
+	    }
+	  }]);
+	
+	  return AddTask;
+	}(_react2.default.Component);
+	
+	exports.default = AddTask;
+
+/***/ }),
+/* 185 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+>>>>>>> backend
 	
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
 	exports.getBooks = getBooks;
 	
+<<<<<<< HEAD
 	var _superagent = __webpack_require__(184);
+=======
+	var _superagent = __webpack_require__(186);
+>>>>>>> backend
 	
 	var _superagent2 = _interopRequireDefault(_superagent);
 	
@@ -21970,7 +22085,11 @@
 	}];
 
 /***/ }),
+<<<<<<< HEAD
 /* 184 */
+=======
+/* 186 */
+>>>>>>> backend
 /***/ (function(module, exports, __webpack_require__) {
 
 	/**
@@ -21987,9 +22106,15 @@
 	  root = this;
 	}
 	
+<<<<<<< HEAD
 	var Emitter = __webpack_require__(185);
 	var requestBase = __webpack_require__(186);
 	var isObject = __webpack_require__(187);
+=======
+	var Emitter = __webpack_require__(187);
+	var requestBase = __webpack_require__(188);
+	var isObject = __webpack_require__(189);
+>>>>>>> backend
 	
 	/**
 	 * Noop.
@@ -22001,7 +22126,11 @@
 	 * Expose `request`.
 	 */
 	
+<<<<<<< HEAD
 	var request = module.exports = __webpack_require__(188).bind(null, Request);
+=======
+	var request = module.exports = __webpack_require__(190).bind(null, Request);
+>>>>>>> backend
 	
 	/**
 	 * Determine XHR.
@@ -22952,7 +23081,11 @@
 
 
 /***/ }),
+<<<<<<< HEAD
 /* 185 */
+=======
+/* 187 */
+>>>>>>> backend
 /***/ (function(module, exports, __webpack_require__) {
 
 	
@@ -23121,13 +23254,21 @@
 
 
 /***/ }),
+<<<<<<< HEAD
 /* 186 */
+=======
+/* 188 */
+>>>>>>> backend
 /***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Module of mixed-in functions shared between node and client code
 	 */
+<<<<<<< HEAD
 	var isObject = __webpack_require__(187);
+=======
+	var isObject = __webpack_require__(189);
+>>>>>>> backend
 	
 	/**
 	 * Clear previous timeout.
@@ -23499,7 +23640,11 @@
 
 
 /***/ }),
+<<<<<<< HEAD
 /* 187 */
+=======
+/* 189 */
+>>>>>>> backend
 /***/ (function(module, exports) {
 
 	/**
@@ -23518,7 +23663,11 @@
 
 
 /***/ }),
+<<<<<<< HEAD
 /* 188 */
+=======
+/* 190 */
+>>>>>>> backend
 /***/ (function(module, exports) {
 
 	// The node and browser modules expose versions of this with the
