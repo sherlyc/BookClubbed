@@ -9,6 +9,7 @@
     "dev-client": "webpack-dev-server --hot --inline --content-base public",
     "dev-server": "nodemon --watch server server/index",
     "test": "ava -v 'test/**/*.test.js'",
+    "dbtest": "ava -v 'test/**/books.test.js'",
     "knex": "knex",
     "start": "node server/index"
   },

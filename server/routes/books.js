@@ -9,6 +9,14 @@ router.get('/', (req, res) => {
     })
 })
 
+router.get('/:id', (req,res) => {
+  db.getBook(req.app.get('knex'),req.params.id)
+    .then((result) => {
+      res.json(result)
+    })
+})
+
+
 // router.post('/', (req, res) => {
 //   req.app.get('knex')('tasks').insert(req.body)
 //     .then((result) => {
