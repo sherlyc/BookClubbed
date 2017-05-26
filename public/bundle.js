@@ -22021,6 +22021,7 @@
 	  value: true
 	});
 	exports.getBooks = getBooks;
+	exports.saveBook = saveBook;
 	
 	var _superagent = __webpack_require__(185);
 	
@@ -22047,6 +22048,16 @@
 	  description: "War and Peace is a novel by the Russian author Leo Tolstoy, which is regarded as a central work of world literature and one of Tolstoy's finest literary achievements.",
 	  image: "http://t3.gstatic.com/images?q=tbn:ANd9GcTAnCgUQcW2e-HqpE6wC9VwXrcGh9_RbXInr3nZScQxpRdB8W4M"
 	}];
+	
+	function saveBook(book, callback) {
+	  _superagent2.default.post('/add').send(book).end(function (err, res) {
+	    if (err) {
+	      callback(err);
+	    } else {
+	      callback(null);
+	    }
+	  });
+	}
 
 /***/ }),
 /* 185 */
@@ -23641,8 +23652,10 @@
 	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
-	    value: true
+	  value: true
 	});
+	
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -23650,7 +23663,15 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
+	var _api = __webpack_require__(184);
+	
+	var api = _interopRequireWildcard(_api);
+	
+	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 	
@@ -23659,26 +23680,80 @@
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
 	var AddBookForm = function (_React$Component) {
-	    _inherits(AddBookForm, _React$Component);
+	  _inherits(AddBookForm, _React$Component);
 	
-	    function AddBookForm() {
-	        _classCallCheck(this, AddBookForm);
+	  function AddBookForm(props) {
+	    _classCallCheck(this, AddBookForm);
 	
-	        return _possibleConstructorReturn(this, (AddBookForm.__proto__ || Object.getPrototypeOf(AddBookForm)).apply(this, arguments));
+	    var _this = _possibleConstructorReturn(this, (AddBookForm.__proto__ || Object.getPrototypeOf(AddBookForm)).call(this, props));
+	
+	    _this.itemModel = { title: '', description: '', author: '', image: '', genre: '' };
+	    _this.state = {
+	      item: _extends({}, _this.itemModel)
+	    };
+	    return _this;
+	  }
+	
+	  _createClass(AddBookForm, [{
+	    key: 'handleSubmit',
+	    value: function handleSubmit(evt) {
+	      evt.preventDefault();
+	
+	      this.setState({
+	        item: _extends({}, this.itemModel)
+	      });
+	      api.saveBook(this.state.item);
 	    }
+	  }, {
+	    key: 'handleChange',
+	    value: function handleChange(evt) {
+	      var field = evt.target.name;
+	      this.setState({
+	        item: _extends({}, this.state.item, _defineProperty({}, field, evt.target.value))
+	      });
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        'form',
+	        { onSubmit: this.handleSubmit.bind(this) },
+	        _react2.default.createElement(
+	          'label',
+	          { htmlFor: 'title' },
+	          'Title'
+	        ),
+	        _react2.default.createElement('input', { type: 'text', name: 'title', value: this.state.item.title, onChange: this.handleChange.bind(this) }),
+	        _react2.default.createElement(
+	          'label',
+	          { htmlFor: 'description' },
+	          'Description'
+	        ),
+	        _react2.default.createElement('textarea', { className: 'textbox', name: 'description', value: this.state.item.description, onChange: this.handleChange.bind(this) }),
+	        _react2.default.createElement(
+	          'label',
+	          { htmlFor: 'name' },
+	          'Author'
+	        ),
+	        _react2.default.createElement('input', { type: 'text', name: 'author', value: this.state.item.author, onChange: this.handleChange.bind(this) }),
+	        _react2.default.createElement(
+	          'label',
+	          { htmlFor: 'image' },
+	          'Image'
+	        ),
+	        _react2.default.createElement('input', { type: 'text', name: 'image', value: this.state.item.image, onChange: this.handleChange.bind(this) }),
+	        _react2.default.createElement(
+	          'label',
+	          { htmlFor: 'name' },
+	          'Genre'
+	        ),
+	        _react2.default.createElement('input', { type: 'text', name: 'genre', value: this.state.item.genre, onChange: this.handleChange.bind(this) }),
+	        _react2.default.createElement('input', { type: 'submit', value: 'Add' })
+	      );
+	    }
+	  }]);
 	
-	    _createClass(AddBookForm, [{
-	        key: 'render',
-	        value: function render() {
-	            return _react2.default.createElement(
-	                'div',
-	                null,
-	                'This is an add book form'
-	            );
-	        }
-	    }]);
-	
-	    return AddBookForm;
+	  return AddBookForm;
 	}(_react2.default.Component);
 	
 	exports.default = AddBookForm;
