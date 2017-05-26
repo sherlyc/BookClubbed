@@ -16,7 +16,7 @@ render () {
                   <div className='container'>
                     <hr></hr>
                     <div className='content'>
-                        <Route exact={true} path='/books' component={Books} />
+                        <Route exact={true} path='/' component={Books} />
                         <Route exact={true} path='/add' component={AddBookForm} />
                     </div>
                   </div>
