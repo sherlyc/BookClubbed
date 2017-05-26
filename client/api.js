@@ -10,7 +10,7 @@ export function getBooks(callback) {
 
 export function saveBook(book, callback) {
     request
-    .post('/add')
+    .post('/books/add')
     .send(book)
     .end(function (err, res) {
       if (err) {

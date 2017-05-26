@@ -13,7 +13,7 @@ test('GET /books', t => {
     .get('/books')
     .expect(200)
     .then((res) => {
-      t.is(res.body.length, 4)
+      t.is(res.body.length, 16)
     })
 })
 
@@ -26,3 +26,11 @@ test('GET book 1 by id', t =>{
     t.is(res.body.title, expected)
   })
 })
+// 
+// test('Insert book', t => {
+//   return request(app)
+//     .post('/AddBookForm')
+//     .send({title:'test'})
+//     .expect(200)
+//     .end()
+// })

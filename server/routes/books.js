@@ -17,11 +17,12 @@ router.get('/:id', (req,res) => {
 })
 
 
-// router.post('/', (req, res) => {
-//   req.app.get('knex')('tasks').insert(req.body)
-//     .then((result) => {
-//       res.sendStatus(201)
-//     })
-// })
+router.post('/add', (req, res) => {
+  req.app.get('knex')('books').insert(req.body)
+    .then((result) => {
+      console.log(result)
+      res.sendStatus(201)
+    })
+})
 
 module.exports = router

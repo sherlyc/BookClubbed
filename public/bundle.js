@@ -21963,6 +21963,7 @@
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
+<<<<<<< HEAD
 	exports.default = function (props) {
 	
 	  return _react2.default.createElement(
@@ -22007,6 +22008,17 @@
 	    )
 	  );
 	};
+=======
+	function saveBook(book, callback) {
+	  _superagent2.default.post('/books/add').send(book).end(function (err, res) {
+	    if (err) {
+	      callback(err);
+	    } else {
+	      callback(null);
+	    }
+	  });
+	}
+>>>>>>> backend
 
 /***/ }),
 /* 184 */
@@ -22872,8 +22884,74 @@
 	    });
 	  }
 	
+<<<<<<< HEAD
 	  return false;
 	};
+=======
+	  _createClass(AddBookForm, [{
+	    key: 'handleSubmit',
+	    value: function handleSubmit(evt) {
+	      evt.preventDefault();
+	
+	      this.setState({
+	        item: _extends({}, this.itemModel)
+	      });
+	      api.saveBook(this.state.item, function () {
+	        this.props.history.push('/');
+	      }.bind(this));
+	    }
+	  }, {
+	    key: 'handleChange',
+	    value: function handleChange(evt) {
+	      var field = evt.target.name;
+	      this.setState({
+	        item: _extends({}, this.state.item, _defineProperty({}, field, evt.target.value))
+	      });
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        'form',
+	        { onSubmit: this.handleSubmit.bind(this) },
+	        _react2.default.createElement(
+	          'label',
+	          { htmlFor: 'title' },
+	          'Title'
+	        ),
+	        _react2.default.createElement('input', { type: 'text', name: 'title', value: this.state.item.title, onChange: this.handleChange.bind(this) }),
+	        _react2.default.createElement(
+	          'label',
+	          { htmlFor: 'description' },
+	          'Description'
+	        ),
+	        _react2.default.createElement('textarea', { className: 'textbox', name: 'description', value: this.state.item.description, onChange: this.handleChange.bind(this) }),
+	        _react2.default.createElement(
+	          'label',
+	          { htmlFor: 'name' },
+	          'Author'
+	        ),
+	        _react2.default.createElement('input', { type: 'text', name: 'author', value: this.state.item.author, onChange: this.handleChange.bind(this) }),
+	        _react2.default.createElement(
+	          'label',
+	          { htmlFor: 'image' },
+	          'Image'
+	        ),
+	        _react2.default.createElement('input', { type: 'text', name: 'image', value: this.state.item.image, onChange: this.handleChange.bind(this) }),
+	        _react2.default.createElement(
+	          'label',
+	          { htmlFor: 'name' },
+	          'Genre'
+	        ),
+	        _react2.default.createElement('input', { type: 'text', name: 'genre', value: this.state.item.genre, onChange: this.handleChange.bind(this) }),
+	        _react2.default.createElement('input', { type: 'submit', value: 'Add' })
+	      );
+	    }
+	  }]);
+	
+	  return AddBookForm;
+	}(_react2.default.Component);
+>>>>>>> backend
 	
 	exports.default = valueEqual;
 
