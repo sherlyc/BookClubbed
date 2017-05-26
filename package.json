@@ -40,6 +40,7 @@
     "nodemon": "^1.11.0",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
+    "react-router-dom": "^4.1.1",
     "react-test-renderer": "^15.5.4",
     "sinon": "^2.3.1",
     "sqlite3": "^3.1.8",
@@ -53,6 +54,7 @@
     "express": "^4.14.0",
     "goodreads-api-node": "0.0.4",
     "knex": "^0.13.0",
+    "pg": "^6.2.3",
     "superagent": "^2.0.0"
   }
 }

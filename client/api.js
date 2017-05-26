@@ -7,3 +7,16 @@ export function getBooks(callback) {
       callback(res.body)
     })
 }
+
+export function saveBook(book, callback) {
+    request
+    .post('/add')
+    .send(book)
+    .end(function (err, res) {
+      if (err) {
+        callback(err)
+      } else {
+        callback(null)
+      }
+    })
+}
