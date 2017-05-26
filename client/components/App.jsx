@@ -6,7 +6,10 @@ export default class App extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      books: []
+      books: [],
+      key: 'goRkDaSFHDMPuSQyTvw',
+      secret: '7Y4Ro2l4zVL7P53YqKjJbcZP6A6oeIqdxo8wBjYMiA'
+
     }
   }
 

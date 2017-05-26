@@ -21867,7 +21867,10 @@
 	    var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, props));
 	
 	    _this.state = {
-	      books: []
+	      books: [],
+	      key: 'goRkDaSFHDMPuSQyTvw',
+	      secret: '7Y4Ro2l4zVL7P53YqKjJbcZP6A6oeIqdxo8wBjYMiA'
+	
 	    };
 	    return _this;
 	  }
