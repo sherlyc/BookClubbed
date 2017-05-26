@@ -16,3 +16,13 @@ test('GET /books', t => {
       t.is(res.body.length, 4)
     })
 })
+
+test('GET book 1 by id', t =>{
+  return request(app)
+  .get('/books/1')
+  .expect(200)
+  .then((res) => {
+    var expected = 'Red Sister'
+    t.is(res.body.title, expected)
+  })
+})
