@@ -19,10 +19,10 @@ export default class App extends React.Component {
     return (
       <div>
         <h1>Book Clubbed!</h1>
-        <div>
+        <div className="column">
           {this.state.books.map((book) => {
             return (
-              <div>
+              <div className="four columns">
                 <img src={book.image}/>
                 <h3>{book.title}</h3>
                 <li>{book.author}</li>

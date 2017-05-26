@@ -21894,11 +21894,11 @@
 	        ),
 	        _react2.default.createElement(
 	          'div',
-	          null,
+	          { className: 'column' },
 	          this.state.books.map(function (book) {
 	            return _react2.default.createElement(
 	              'div',
-	              null,
+	              { className: 'four columns' },
 	              _react2.default.createElement('img', { src: book.image }),
 	              _react2.default.createElement(
 	                'h3',
