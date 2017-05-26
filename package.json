@@ -55,6 +55,7 @@
     "goodreads-api-node": "0.0.4",
     "knex": "^0.13.0",
     "pg": "^6.2.3",
+    "sqlite3": "^3.1.8",
     "superagent": "^2.0.0"
   }
 }
