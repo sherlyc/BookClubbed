@@ -24,3 +24,16 @@ const books = [
     image: "http://t3.gstatic.com/images?q=tbn:ANd9GcTAnCgUQcW2e-HqpE6wC9VwXrcGh9_RbXInr3nZScQxpRdB8W4M"
   }
 ]
+
+export function saveBook(book, callback) {
+    request
+    .post('/add')
+    .send(book)
+    .end(function (err, res) {
+      if (err) {
+        callback(err)
+      } else {
+        callback(null)
+      }
+    })
+}
