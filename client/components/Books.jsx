@@ -1,38 +1,26 @@
 import React from 'react'
-import * as api from '../api'
+import {Link} from 'react-router-dom'
 
-export default class App extends React.Component {
+export default(props) => {
 
-  constructor(props) {
-    super(props)
-    this.state = {
-      books: []
-    }
-  }
-
-  componentDidMount() {
-    api.getBooks((books) => this.setState({books}))
-
-  }
-
-  render() {
-    return (
+  return (
+    <div>
+      <h1>Book Clubbed!</h1>
       <div>
-        <h1>Book Clubbed!</h1>
-        <div>
-          {this.state.books.map((book) => {
-            return (
-              <div>
-                <img src={book.image}/>
-                <h3>{book.title}</h3>
-                <li>{book.author}</li>
-                <li>{book.genre}</li>
-                <li>{book.rating}</li>
-              </div>
-            )
-          })}
-        </div>
+        {props.books.map((book) => {
+          return (
+            <div key={book.id}>
+              <Link to={'/book/' + book.id}>
+              <img src={book.image}/>
+            </Link>
+              <h3>{book.title}</h3>
+              <p>Author: {book.author}</p>
+              <p>Genre: {book.genre}</p>
+            </div>
+          )
+        })}
       </div>
-    )
-  }
+    </div>
+  )
+
 }
