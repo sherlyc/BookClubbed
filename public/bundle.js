@@ -22036,7 +22036,7 @@
 	}
 	
 	function saveBook(book, callback) {
-	  _superagent2.default.post('/add').send(book).end(function (err, res) {
+	  _superagent2.default.post('/books/add').send(book).end(function (err, res) {
 	    if (err) {
 	      callback(err);
 	    } else {
@@ -23688,7 +23688,9 @@
 	      this.setState({
 	        item: _extends({}, this.itemModel)
 	      });
-	      api.saveBook(this.state.item);
+	      api.saveBook(this.state.item, function () {
+	        this.props.history.push('/');
+	      }.bind(this));
 	    }
 	  }, {
 	    key: 'handleChange',

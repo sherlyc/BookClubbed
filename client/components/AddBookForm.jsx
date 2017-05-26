@@ -16,7 +16,10 @@ export default class AddBookForm extends React.Component {
         this.setState({
           item: { ...this.itemModel }
         })
-        api.saveBook(this.state.item)
+        api.saveBook(this.state.item, function(){
+          this.props.history.push('/')
+        }.bind(this))
+
       }
 
       handleChange (evt) {
